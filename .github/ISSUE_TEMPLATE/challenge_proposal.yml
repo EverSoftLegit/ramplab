@@ -1,0 +1,54 @@
+name: Propose a security challenge
+description: Suggest a new local-only Web3 fintech security exercise.
+title: "[CHALLENGE] "
+labels: [challenge, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: "Proposals must be synthetic, local-only and safe to run. Do not include live targets or real credentials."
+  - type: input
+    id: title
+    attributes:
+      label: Challenge title
+    validations:
+      required: true
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Domain
+      options:
+        - API / application security
+        - Wallet / signatures
+        - Exchange / business logic
+        - Payments / webhooks
+        - Ledger / reconciliation
+        - Smart contracts
+        - Infrastructure / supply chain
+    validations:
+      required: true
+  - type: dropdown
+    id: level
+    attributes:
+      label: Difficulty
+      options: [Beginner, Intermediate, Advanced, Expert]
+    validations:
+      required: true
+  - type: textarea
+    id: scenario
+    attributes:
+      label: Synthetic business scenario and learning objective
+    validations:
+      required: true
+  - type: textarea
+    id: secure
+    attributes:
+      label: Expected secure behaviour and remediation
+    validations:
+      required: true
+  - type: textarea
+    id: safety
+    attributes:
+      label: Scope and containment plan
+      description: Explain why the challenge is safe to execute locally.
+    validations:
+      required: true

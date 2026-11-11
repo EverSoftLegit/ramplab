@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.env
+.data/
+data/*.sqlite3
+contracts/out/
+contracts/cache/
+contracts/broadcast/
+.DS_Store
+
+# build artifacts
+*.egg-info/
+*.tmp

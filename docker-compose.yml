@@ -1,0 +1,35 @@
+services:
+  ramplab:
+    build: .
+    container_name: ramplab-local
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      RAMP_DB_PATH: /data/ramplab.sqlite3
+      RAMP_LAB_WEBHOOK_SECRET: ${RAMP_LAB_WEBHOOK_SECRET:-local-only-change-me}
+    volumes:
+      - ramplab_data:/data
+    networks:
+      - isolated_lab
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,noexec,nosuid,nodev
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    user: "10001:10001"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health', timeout=2)"]
+      interval: 20s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
+networks:
+  isolated_lab:
+    internal: true
+
+volumes:
+  ramplab_data:

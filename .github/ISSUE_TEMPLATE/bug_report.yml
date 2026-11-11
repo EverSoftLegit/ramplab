@@ -1,0 +1,40 @@
+name: Bug report (lab behaviour)
+description: Report a defect in RampLab itself, not an intended challenge vulnerability.
+title: "[BUG] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include real customer data, credentials, seed phrases, real transaction IDs or third-party targets."
+  - type: input
+    id: version
+    attributes:
+      label: RampLab version or commit
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python version, Docker/Foundry version if relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+    validations:
+      required: true
